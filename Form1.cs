@@ -19,6 +19,7 @@ namespace DSplit
         public Form1()
         {
             InitializeComponent();
+            lblTimer.Text = "00:00:00.00";
 
             updateTimer.Interval = 50;
             updateTimer.Tick += UpdateTimer_Tick;
@@ -53,11 +54,18 @@ namespace DSplit
         private void btnReset_Click(object sender, EventArgs e)
         {
             stopWatch.Reset();
-            updateTimer.Dispose();
+            updateTimer.Stop();  // Stop the timer without disposing it.
+            lblTimer.Text = "00:00:00.00";  // Immediately update the label to display 0:00:00.
             btnStartStop.Text = "Start";
+
+            // Clear splits in the UI
+            txtSplits.Clear();
+            splits.Clear();
 
             currentRun.RunCount++;
         }
+
+
 
         private void btnClearSplits_Click(object sender, EventArgs e)
         {
@@ -67,19 +75,22 @@ namespace DSplit
         private void splitTable()
         {
             long currentTicks = stopWatch.Elapsed.Ticks;
-
+            // Only add the split if it's unique
             if (!splits.Contains(currentTicks))
             {
-
-                splits.Add(stopWatch.Elapsed.Ticks);
-                lstSplits.Items.Clear();
+                splits.Add(currentTicks);
+                txtSplits.Clear();
+                int splitIndex = 1;
                 foreach (var tickValue in splits)
                 {
                     TimeSpan splitTime = new TimeSpan(tickValue);
-                    lstSplits.Items.Add(splitTime.ToString("hh\\:mm\\:ss\\.ff"));
+                    // Format each split line. This example shows the split number and time.
+                    txtSplits.AppendText($"Split {splitIndex}: {splitTime.ToString(@"hh\:mm\:ss\.ff")}\r\n");
+                    splitIndex++;
                 }
             }
         }
+
         //TODO: Write the save to xml function after adding File/Settings to the form
         private void SaveToXML()
         {

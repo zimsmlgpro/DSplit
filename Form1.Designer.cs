@@ -41,6 +41,7 @@
             eToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItem = new ToolStripMenuItem();
             GameNameTxt = new TextBox();
+            txtSplits = new TextBox();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -123,26 +124,26 @@
             // saveToolStripMenuItem
             // 
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            saveToolStripMenuItem.Size = new Size(180, 22);
+            saveToolStripMenuItem.Size = new Size(116, 22);
             saveToolStripMenuItem.Text = "Save As";
             saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
             // 
             // loadToolStripMenuItem
             // 
             loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            loadToolStripMenuItem.Size = new Size(180, 22);
+            loadToolStripMenuItem.Size = new Size(116, 22);
             loadToolStripMenuItem.Text = "Load";
             // 
             // eToolStripMenuItem
             // 
             eToolStripMenuItem.Name = "eToolStripMenuItem";
-            eToolStripMenuItem.Size = new Size(180, 22);
+            eToolStripMenuItem.Size = new Size(116, 22);
             eToolStripMenuItem.Text = "Settings";
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(180, 22);
+            exitToolStripMenuItem.Size = new Size(116, 22);
             exitToolStripMenuItem.Text = "Exit";
             // 
             // GameNameTxt
@@ -156,11 +157,21 @@
             GameNameTxt.TextChanged += GameNameTxt_TextChanged;
             GameNameTxt.KeyDown += GameNameTxt_KeyDown;
             // 
+            // txtSplits
+            // 
+            txtSplits.Location = new Point(165, 23);
+            txtSplits.Multiline = true;
+            txtSplits.Name = "txtSplits";
+            txtSplits.ScrollBars = ScrollBars.Vertical;
+            txtSplits.Size = new Size(214, 379);
+            txtSplits.TabIndex = 8;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(402, 432);
+            Controls.Add(txtSplits);
             Controls.Add(GameNameTxt);
             Controls.Add(btnClearSplits);
             Controls.Add(btnReset);
@@ -193,5 +204,6 @@
         private ToolStripMenuItem eToolStripMenuItem;
         private ToolStripMenuItem exitToolStripMenuItem;
         private TextBox GameNameTxt;
+        private TextBox txtSplits;
     }
 }
